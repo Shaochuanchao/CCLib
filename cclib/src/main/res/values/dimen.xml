@@ -2,4 +2,6 @@
 <resources>
 
     <dimen name="custom_padding">16dp</dimen>
+
+    <dimen name="img_defaul_corner">10dp</dimen>
 </resources>
