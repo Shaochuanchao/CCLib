@@ -11,21 +11,19 @@ import android.view.View
  */
 interface IState {
 
+    enum class State {
+        LOADING, SUC, ERROR
+    }
+
     /**
      * 内容展示
      */
     fun dataView(): View
 
     /**
-     * 空展示
-     */
-    fun emptyView(): View
-
-    /**
      * 错误展示
      */
     fun errorView(): View
-
 
     /**
      * 加载view
