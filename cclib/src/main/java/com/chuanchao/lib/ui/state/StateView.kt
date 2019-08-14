@@ -13,7 +13,7 @@ import com.chuanchao.lib.ui.ILoading
 class StateView private constructor(
     val dataView: View, val emptyView: View? = null,
     val errorView: View? = null, val loadingView: View? = null,
-    val ladingBy: ILoading.LoadingBY? = null
+    val loadingBy: ILoading.LoadingBY? = null
 ) {
 
     /**
@@ -22,7 +22,7 @@ class StateView private constructor(
     data class Builder(
         var dataView: View , var emptyView: View? = null,
         var errorView: View? = null, var loadingView: View? = null,
-        var ladingBy: ILoading.LoadingBY? = null
+        var loadingBy: ILoading.LoadingBY? = null
     ) {
 
         /**
@@ -45,7 +45,7 @@ class StateView private constructor(
         }
 
         fun loadingBy(loadingBY: ILoading.LoadingBY) = apply {
-            this.ladingBy = ladingBy
+            this.loadingBy = loadingBY
         }
 
 

@@ -81,6 +81,7 @@ class GlideImageLoader(override var placeHolderID: Int = 0, override var errorIm
                     apply(RequestOptions.bitmapTransform(RoundedCorners(20)))
                 IImageLoader.DisplayType.CIRCLE ->
                     apply(RequestOptions.bitmapTransform(CircleCrop()))
+                IImageLoader.DisplayType.NORMAL ->{}
             }
 
             //占位图
