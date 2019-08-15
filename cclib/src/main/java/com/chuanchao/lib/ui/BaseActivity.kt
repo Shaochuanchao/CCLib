@@ -13,16 +13,13 @@ import com.chuanchao.lib.ui.widget.LoadingDialog
  * Desc: activity 基类
  *
  */
-abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading, IState {
+abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading {
 
 
     /**
-     * dialo加载框
+     * dialo加载框,不用byLazy为了避免不必要的初始化
      */
-    val loadingDialg: LoadingDialog by lazy {
-        LoadingDialog.loadingDialog(this)
-    }
-
+    private var loadingDialog: LoadingDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -34,6 +31,18 @@ abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading, IState {
 
     override fun showLoading() {
 
+        when(loadingBy()){
+            ILoading.LoadingBY.DIALOG -> {
+                if(loadingDialog==null){
+                    loadingDialog = LoadingDialog.loadingDialog(this@BaseActivity)
+                }
+                loadingDialog?.show()
+            }
+            ILoading.LoadingBY.SMART_REFRESH ->{
+
+            }
+        }
+
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -43,14 +52,23 @@ abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading, IState {
     }
 
 
-    override fun loadingView(): View {
+    override fun loadingView(): View? {
 
-//        val loadingView = when (loadingBy()) {
-//            ILoading.LoadingBY.CUTOM_VIEW -> loadingView()
-//            ILoading.LoadingBY.SMART_REFRESH ->
-//
-//        }
+        if(ILoading.LoadingBY.DIALOG ==loadingBy()){
+            return  null
+        }
+
         return loadingView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val isShowing = loadingDialog?.isShowing
+        if (isShowing != null && isShowing) {
+            loadingDialog?.dismiss()
+            loadingDialog = null
+        }
+
     }
 
 }

@@ -50,7 +50,7 @@ class GlideImageLoader(override var placeHolderID: Int = 0, override var errorIm
                 return true
             }
 
-        }).submit()
+        }).submit(Target.SIZE_ORIGINAL,Target.SIZE_ORIGINAL)
 
     }
 

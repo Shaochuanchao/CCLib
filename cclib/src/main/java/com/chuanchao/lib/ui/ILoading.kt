@@ -1,5 +1,7 @@
 package com.chuanchao.lib.ui
 
+import android.view.View
+
 /**
  *
  * Author: chuanchao
@@ -36,6 +38,8 @@ interface ILoading {
 //        @Retention(AnnotationRetention.SOURCE)
 //        annotation class LoadingBY
 //    }
+
+    fun loadingView(): View?
 
 
     /**
