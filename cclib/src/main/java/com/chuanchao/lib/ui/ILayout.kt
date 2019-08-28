@@ -14,6 +14,10 @@ interface ILayout {
      */
     fun getLayoutResId(): Int
 
+    /**
+     * 是否需要下拉刷新
+     */
+    fun isNeedSmartRefresh(): Boolean
 
     /**
      * 布局初始化

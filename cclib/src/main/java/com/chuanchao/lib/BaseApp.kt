@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.Application
 import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.chuanchao.lib.contant.BCConstant
+import com.chuanchao.lib.constant.BCConstant
 import com.chuanchao.lib.tool.SimpleLifecycleCallback
 
 /**

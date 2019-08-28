@@ -1,4 +1,4 @@
-package com.chuanchao.lib.contant
+package com.chuanchao.lib.constant
 
 /**
  *
