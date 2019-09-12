@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CCLib</string>
+    <string name="cc_app_name">CCLib</string>
 
-    <string name="error_text">出错了，点击刷新</string>
+    <string name="cc_error_text">出错了，点击刷新</string>
 </resources>

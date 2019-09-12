@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.chuanchao.lib.constant.BCConstant
 import com.chuanchao.lib.tool.SimpleLifecycleCallback
+import com.scwang.smartrefresh.header.WaveSwipeHeader
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
 
 /**
  *
@@ -15,6 +17,12 @@ import com.chuanchao.lib.tool.SimpleLifecycleCallback
  */
 open class BaseApp : Application() {
 
+
+    init {
+        SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+            WaveSwipeHeader(context)
+        }
+    }
 
     companion object {
         private lateinit var instance: BaseApp
@@ -41,7 +49,8 @@ open class BaseApp : Application() {
         override fun onActivityResumed(p0: Activity) {
             super.onActivityResumed(p0)
             if (curActivityCount == 0) {
-                LocalBroadcastManager.getInstance(this@BaseApp).sendBroadcast(Intent(BCConstant.APP_TO_FRONT))
+                LocalBroadcastManager.getInstance(this@BaseApp)
+                    .sendBroadcast(Intent(BCConstant.APP_TO_FRONT))
             }
             curActivityCount++
         }
@@ -50,7 +59,8 @@ open class BaseApp : Application() {
             super.onActivityStopped(p0)
             curActivityCount--
             if (curActivityCount == 0) {
-                LocalBroadcastManager.getInstance(this@BaseApp).sendBroadcast(Intent(BCConstant.APP_TO_BACKGROUND))
+                LocalBroadcastManager.getInstance(this@BaseApp)
+                    .sendBroadcast(Intent(BCConstant.APP_TO_BACKGROUND))
             }
         }
 

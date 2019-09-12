@@ -1,7 +1,5 @@
 package com.chuanchao.lib.ui
 
-import android.view.View
-
 /**
  *
  * Author: chuanchao
@@ -28,20 +26,6 @@ interface ILoading {
     }
 
 
-//    companion object {
-//        //加载方式定义
-//        const val BY_DIALOG = 0
-//        const val BY_VIEW = 1
-//        const val BY_SWAP = 2
-//
-//        @IntDef(BY_DIALOG, BY_VIEW, BY_SWAP)
-//        @Retention(AnnotationRetention.SOURCE)
-//        annotation class LoadingBY
-//    }
-
-    fun loadingView(): View?
-
-
     /**
      * 显示加载
      */
@@ -53,9 +37,10 @@ interface ILoading {
      */
     fun hideLoading()
 
-
     /**
-     * 加载方式
+     * 销毁
      */
-    fun loadingBy(): LoadingBY
+    fun whenDestroy()
+
+
 }

@@ -13,6 +13,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        resourcePrefix "cc"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -35,7 +36,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api 'androidx.appcompat:appcompat:1.0.2'
+    api 'androidx.appcompat:appcompat:1.1.0'
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-x'
     //特殊样式 Header
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-x'

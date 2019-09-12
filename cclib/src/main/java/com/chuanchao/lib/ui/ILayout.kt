@@ -1,5 +1,7 @@
 package com.chuanchao.lib.ui
 
+import android.view.View
+
 /**
  *
  * Author: chuanchao
@@ -29,5 +31,13 @@ interface ILayout {
      * 数据初始化（请求数据发起）
      */
     fun initData()
+
+
+    fun loadingView(): View?
+
+    /**
+     * 加载方式
+     */
+    fun loadingBy(): ILoading.LoadingBY
 
 }

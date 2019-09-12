@@ -17,10 +17,10 @@ class LoadingDialog(context: Context, theme: Int) : Dialog(context, theme) {
     companion object {
 
         fun loadingDialog(content: Context): LoadingDialog {
-            val dialog = LoadingDialog(content, R.style.Dialog_No_Border)
+            val dialog = LoadingDialog(content, R.style.cc_Dialog_No_Border)
             dialog.window?.attributes?.gravity = Gravity.CENTER
             dialog.setCancelable(true)
-            dialog.setContentView(R.layout.custom_dialog)
+            dialog.setContentView(R.layout.cc_view_dialog_loading)
 
             return dialog
         }

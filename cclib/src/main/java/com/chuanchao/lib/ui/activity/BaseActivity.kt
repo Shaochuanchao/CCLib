@@ -1,9 +1,10 @@
-package com.chuanchao.lib.ui
+package com.chuanchao.lib.ui.activity
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.view.ViewGroup
+import com.chuanchao.lib.ui.ILayout
+import com.chuanchao.lib.ui.ILoading
 import com.chuanchao.lib.ui.widget.LoadingDialog
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 
@@ -14,7 +15,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
  * Desc: activity 基类,实现默认加载实现
  *
  */
-abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading {
+abstract class BaseActivity : NavActivity(), ILayout,
+    ILoading {
 
 
     /**
@@ -24,13 +26,30 @@ abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading {
 
     private var smartRefreshLayout: SmartRefreshLayout? = null
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(getLayoutResId())
         initLayout()
         initData()
     }
 
+
+    override fun setContentView(layoutResID: Int) {
+        if (isNeedSmartRefresh()) {
+            smartRefreshLayout = SmartRefreshLayout(this).apply {
+                val params = ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+                val contentView = layoutInflater.inflate(layoutResID, null)
+                smartRefreshLayout?.addView(contentView, params)
+
+            }
+            setContentView(smartRefreshLayout)
+        } else {
+            super.setContentView(layoutResID)
+        }
+    }
 
     override fun showLoading() {
         when (loadingBy()) {
@@ -44,7 +63,6 @@ abstract class BaseActivity : AppCompatActivity(), ILayout, ILoading {
             else -> loadingView()?.visibility = View.VISIBLE
         }
     }
-
 
     override fun hideLoading() {
         when (loadingBy()) {
