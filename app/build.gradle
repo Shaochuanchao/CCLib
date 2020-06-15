@@ -35,3 +35,28 @@ dependencies {
 
     implementation project(':cclib')
 }
+
+
+task installAndRun(dependsOn: 'assembleDebug') {
+    doFirst {
+        exec {
+            workingDir "${buildDir}/outputs/apk/debug"
+            commandLine 'adb', 'install', '-r', 'app-debug.apk'
+        }
+        exec {
+            commandLine 'adb', 'shell', 'am', 'start', '-n',
+                    "${android.defaultConfig.applicationId}/com.chuanchao.library.MainActivity"
+        }
+    }
+
+    doLast{
+        def today = new Date().format('yyyyMMdd_HH_mm')
+        copy{
+            from('build/outputs/apk/debug')
+            into('build/outputs/apk_copy')
+            include('app-debug.apk')
+            rename('app-debug.apk','Quote' + "_"+ today + '.apk')
+        }
+    }
+}
+

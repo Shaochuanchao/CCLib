@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
  *
  * Author: chuanchao
  * Data: 2019-08-14
- * Desc: //TODO
+ * Desc: 图片加载方法定义
  *
  */
 interface IImageLoader {

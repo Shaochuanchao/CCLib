@@ -1,8 +1,9 @@
-package com.chuanchao.lib.ui
+package com.chuanchao.lib.ui.widget.loading
 
 import android.content.Context
 import android.view.View
 import com.chuanchao.lib.ui.widget.LoadingDialog
+import com.chuanchao.lib.ui.widget.loading.ILoading
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 
 /**
@@ -13,7 +14,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout
  *
  */
 
-open class DefaultLoadingImpl(
+internal class DefaultLoadingImpl(
     val context: Context,
     val loadingBY: ILoading.LoadingBY,
     val loadingView: View? = null

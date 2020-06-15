@@ -1,4 +1,4 @@
-package com.chuanchao.lib.ui
+package com.chuanchao.lib.ui.widget.loading
 
 /**
  *
@@ -18,7 +18,7 @@ interface ILoading {
         /**
          * 自定义样式加载
          */
-        CUTOM_VIEW,
+        CUSTOM_VIEW,
         /**
          * smartRefresh加载
          */

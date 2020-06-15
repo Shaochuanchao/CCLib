@@ -3,12 +3,14 @@ package com.chuanchao.library
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.chuanchao.lib.ui.activity.LoadingActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : LoadingActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
     }
+
 }
